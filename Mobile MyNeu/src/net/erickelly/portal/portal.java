@@ -3,7 +3,6 @@ package net.erickelly.portal;
 import android.app.Activity;
 
 import android.app.ProgressDialog;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,7 +21,6 @@ import android.graphics.Bitmap;
 public class portal extends Activity {
     
 	private WebView webview;
-	private SharedPreferences prefs;
 	private String login = "http://myneu.neu.edu/cp/home/displaylogin";
 	private String home = "http://myneu.neu.edu/render.userLayoutRootNode.uP?uP_root=root";
 	private String logout = "http://myneu.neu.edu/cp/ip/login?sys=was&url=http://myneu.neu.edu/up/Logout";
@@ -32,6 +30,10 @@ public class portal extends Activity {
 	Handler handle;
 	
 	// Javascript code to run
+//	String background =
+////		"if (document.body){\n" + 
+//		"document.body.background = " + "file:///android_asset/background_plain.png" + ";\n";
+////		"}";
 	String loginJs = 
 			"function login() {\n" + 
 			"/* LOGIN FORM\n" + 
@@ -50,10 +52,10 @@ public class portal extends Activity {
 			"			<button style=\"width:100%; height:50px; margin-top:20px;\">Login</button> \\\n" + 
 			"		</form>'.replace('%FormAction%', submitTo_safe).replace('%UUID%', uuid);\n" + 
 			"		\n" + 
-			"		document.body.innerHTML = properForm;\n" +
+			"		document.body.innerHTML = properForm;\n" + 
 			"}\n" +
-			"login();\n" +
-			"android.showPage();";
+			"login();\n" + 
+			"android.showPage();\n";
 	String transMenu = "function transMenu() {\n" +
 			"/* ACCOUNTS MENU */\n" + 
 			"	\n" + 
@@ -194,7 +196,8 @@ public class portal extends Activity {
         
         handle = new Handler();
         
-        webview.setVisibility(View.GONE);
+        //webview.setVisibility(View.GONE);
+//        webview.setBackgroundColor(0);
         webview.loadUrl(login);
     }
 	
@@ -301,11 +304,11 @@ public class portal extends Activity {
 	public void onConfigurationChanged(Configuration newConfig) {
 	    super.onConfigurationChanged(newConfig);
 	}
-	
-	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-	      webview.saveState(outState);
-	}
+//	
+//	@Override
+//	protected void onSaveInstanceState(Bundle outState) {
+//	      webview.saveState(outState);
+//	}
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -332,7 +335,7 @@ public class portal extends Activity {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		prefs.edit().putString("url", webview.getUrl()).commit();
+		finish();
 	}
 	
 }

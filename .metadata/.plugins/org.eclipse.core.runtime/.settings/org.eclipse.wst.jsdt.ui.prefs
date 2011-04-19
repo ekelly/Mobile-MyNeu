@@ -1,4 +1,4 @@
-#Thu Apr 07 11:43:54 EDT 2011
+#Tue Apr 19 00:42:06 EDT 2011
 useQuickDiffPrefPage=true
 tabWidthPropagated=true
 proposalOrderMigrated=true
@@ -6,7 +6,9 @@ useAnnotationsPrefPage=true
 org.eclipse.jface.textfont=1|Monaco|11.0|0|COCOA|1|;
 org.eclipse.wst.jsdt.ui.javadoclocations.migrated=true
 eclipse.preferences.version=1
-fontPropagated=true
+hoverModifierMasks=org.eclipse.wst.jsdt.ui.BestMatchHover;0;org.eclipse.wst.jsdt.ui.ProblemHover;0;org.eclipse.wst.jsdt.ui.NLS;0;org.eclipse.wst.jsdt.ui.JavadocHover;0;org.eclipse.wst.jsdt.ui.JavaSourceHover;131072;
 org.eclipse.wst.jsdt.ui.editor.tab.width=
+hoverModifiers=org.eclipse.wst.jsdt.ui.BestMatchHover;0;org.eclipse.wst.jsdt.ui.ProblemHover;\!0;org.eclipse.wst.jsdt.ui.NLS;\!0;org.eclipse.wst.jsdt.ui.JavadocHover;\!0;org.eclipse.wst.jsdt.ui.JavaSourceHover;Shift;
+fontPropagated=true
 org.eclipse.wst.jsdt.internal.ui.navigator.layout=1
 org.eclipse.wst.jsdt.ui.formatterprofiles.version=11

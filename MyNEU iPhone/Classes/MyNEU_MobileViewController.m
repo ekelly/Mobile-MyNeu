@@ -74,7 +74,12 @@
     [super viewDidLoad];
 	
 	[webView setDelegate:self];
+	[webView setOpaque:NO];
 	[webView setScalesPageToFit:YES];
+	//webView.backgroundColor = [UIColor clearColor];
+	
+	self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"Default.png"]];
+	
 	
 	[self loadURL];
 }
@@ -109,6 +114,13 @@
 	NSString *url = [[wv.request URL] absoluteString];
 	NSLog(@"<NSURLRequest %@>", url);
 	
+	NSString *filePath = [[NSBundle mainBundle]
+						  pathForResource:@"Default"
+						  ofType:@"png"
+						  inDirectory:@""];	
+	NSLog(@"Path to Default.png: %@", filePath);
+	//[filePath release];
+	
 	/*
 	 Login: "displaylogin"
 	 Portal: "cp/home/next" "render.userLayoutRootNode.uP"
@@ -123,12 +135,14 @@
 			   [self urlContains:@"render.userLayoutRootNode.uP"]) {
 		[self loadJS:@"main"];
 	} else if([self urlContains:@"HuskyCard/CurrentBalance"]) {
+		[self loadJS:@"accountbal"];
+	} else if([self urlContains:@"cardTxns.do?view="]) {
 		[self loadJS:@"transmenu"];
 	} else if([self urlContains:@"cardTxns.do"]) {
 		[self loadJS:@"transactions"];
 	} else {
-		NSLog(@"Main menu");
-		[self loadJS:@"main"];
+		NSLog(@"Loading unknown URL");
+		//[self loadJS:@"main"];
 	}
 	
 	/*if(url.contains((CharSequence)"displaylogin") || (url == "")) {
@@ -151,6 +165,13 @@
 		Log.d("loadMyNeuJs", "called on other page");
 	}*/
 	//[self loadJS:@"myneu_mobile"];
+}
+
+//- (void) handleBack:(id)sender {
+//}
+- (void) handleMenu:(id)sender {
+	NSLog(@"Hit 'Menu' Button");
+	[self loadJS:@"main"];
 }
 
 

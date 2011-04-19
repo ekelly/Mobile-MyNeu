@@ -3,6 +3,12 @@
 //document.body.style.padding = "20px";
 
 document.body.style.background = "#eee";
+//document.body.style.background = "file:///Default.png";
+
+document.body.style.fontFamily = "Helvetica, sans-serif";
+
+var newStyle = document.createElement
+
 
 var h1 = document.createElement('h1');
 h1.innerHTML = "MyNEU Mobile";

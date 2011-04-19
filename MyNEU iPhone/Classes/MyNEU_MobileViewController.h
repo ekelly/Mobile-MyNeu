@@ -12,6 +12,9 @@
 	IBOutlet UIWebView *webView;
 }
 
+//-(IBAction) handleBack : (id)sender;
+-(IBAction) handleMenu : (id)sender;
+
 @property(nonatomic, retain) UIWebView *webView;
 
 @end

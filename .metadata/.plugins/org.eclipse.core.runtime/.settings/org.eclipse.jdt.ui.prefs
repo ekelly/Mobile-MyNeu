@@ -1,4 +1,4 @@
-#Tue Apr 19 00:42:06 EDT 2011
+#Tue Apr 19 02:07:47 EDT 2011
 sourceHoverBackgroundColor=255,255,225
 content_assist_proposals_foreground=0,0,0
 escapeStrings=true
@@ -20,3 +20,4 @@ org.eclipse.jdt.internal.ui.navigator.layout=2
 content_assist_number_of_computers=15
 useQuickDiffPrefPage=true
 org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"/>

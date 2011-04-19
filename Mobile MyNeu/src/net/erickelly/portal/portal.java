@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.webkit.CookieManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -244,6 +245,7 @@ public class portal extends Activity {
 	    }
 	    return super.onKeyDown(keyCode, event);
 	}
+	
 	public void loadMyNeuJs() {
 //	  	dialog.dismiss();
 		String url = "";
@@ -315,6 +317,12 @@ public class portal extends Activity {
        super.onCreateOptionsMenu(menu);
        MenuInflater inflater = getMenuInflater();
        inflater.inflate(R.menu.menu, menu);
+       
+       CookieManager mgr = CookieManager.getInstance();
+       if(mgr.hasCookies()) {
+    	   menu.getItem(0).setEnabled(false);
+       }
+       
        return true;
     }
 	
@@ -322,10 +330,12 @@ public class portal extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
     	switch(item.getItemId()) {
     		case R.id.logout:
+    			webview.setVisibility(View.GONE);
     			webview.loadUrl(logout);
     			webview.loadUrl(login);
     			break;
     		case R.id.home:
+    			webview.setVisibility(View.GONE);
     			webview.loadUrl(home);
     			break;
     	}

@@ -6,15 +6,18 @@ import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.graphics.Bitmap;
 
 public class portal extends Activity {
     
@@ -26,16 +29,9 @@ public class portal extends Activity {
 	private String transactions = "http://myneu.neu.edu/cp/ip/login?sys=was&url=https://prod-web.neu.edu/webapp/ISF/cardTxns.do";
 	
 	ProgressDialog dialog;
+	Handler handle;
 	
 	// Javascript code to run
-	String x = "function $x(p, context) {\n" + 
-			"	if(!context) {\n" + 
-			"		context = document;}\n" + 
-			"	var i, arr = [], xpr = document.evaluate(p, context, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);\n" + 
-			"	for(i = 0; item = xpr.snapshotItem(i); i++) {\n" + 
-			"		arr.push(item);}\n" + 
-			"	return arr;\n" + 
-			"}\n";
 	String loginJs = 
 			"function login() {\n" + 
 			"/* LOGIN FORM\n" + 
@@ -56,7 +52,8 @@ public class portal extends Activity {
 			"		\n" + 
 			"		document.body.innerHTML = properForm;\n" +
 			"}\n" +
-			"login();";
+			"login();\n" +
+			"android.showPage();";
 	String transMenu = "function transMenu() {\n" +
 			"/* ACCOUNTS MENU */\n" + 
 			"	\n" + 
@@ -88,7 +85,8 @@ public class portal extends Activity {
 			"text-color: black; text-align: center; line-height: 50px; margin-bottom: 10px;\">Back</div>';\n" + 
 			"		document.body.appendChild(lo);\n" +
 			"}\n" +
-			"transMenu();";
+			"transMenu();\n" +
+			"android.showPage();";
 	String portalJs = 
 		"function portal() {\n" + 
 			"/* MAIN MENU */\n" + 
@@ -122,7 +120,8 @@ public class portal extends Activity {
 			"		lo.innerHTML = '<div style=\"width:100%; height: 50px; border: 1px solid red; text-color: black; text-align: center; line-height: 50px; margin-bottom: 10px;\">Logout</div>';\n" + 
 			"		document.body.appendChild(lo);\n" + 
 			"}\n" + 
-			"portal();";
+			"portal();\n" +
+			"android.showPage();";
 	String currBalJs = 
 		"function currBal() {\n" + 
 		"	var titles = [\"Husky Dollars\",\"Dining Dollars\",\"Free Print Allowance\",\"Laundry Bucks\"];\n" + 
@@ -140,7 +139,8 @@ public class portal extends Activity {
 		"        document.body.appendChild(tables[i]);\n" + 
 		"    }\n" + 
 		"}\n" + 
-		"currBal();";
+		"currBal();\n" +
+		"android.showPage();";
 	String formatTransactionPagesJs = 
 		"function transactions() {\n" + 
 		"	var start = document.getElementsByTagName('p')[3];\n" + 
@@ -153,7 +153,8 @@ public class portal extends Activity {
 		"    t.appendChild(tb);\n" + 
 		"    document.body.appendChild(t);\n" + 
 		"}\n" + 
-		"transactions();";
+		"transactions();\n" +
+		"android.showPage();";
 	
 	@Override
     public void onCreate(final Bundle savedInstanceState) {
@@ -166,19 +167,19 @@ public class portal extends Activity {
         // Set View
         webview = (WebView) findViewById(R.id.webView1);
         
-        // Restore state
-//        if (savedInstanceState != null) {
-//           webview.restoreState(savedInstanceState);
-//        }
-        
         // Set up webview
         webview.setVerticalScrollBarEnabled(false);
         webview.setHorizontalScrollBarEnabled(false);
         webview.getSettings().setJavaScriptEnabled(true);
+        webview.addJavascriptInterface(new JsInterface(), "android");
         webview.setWebViewClient(new WebViewClient() {  
           @Override  
           public void onPageFinished(WebView view, String url){
         	  loadMyNeuJs();
+          }
+          @Override
+          public void onPageStarted(WebView view, String url, Bitmap favicon) {
+        	  webview.setVisibility(View.GONE);
           }
           /* CAN POSSIBLY CUT OUT PAGE LOADING WITH shouldOverrideUrlLoading(Webview view, String url) */
         });
@@ -190,8 +191,23 @@ public class portal extends Activity {
         	}
         });
         webview.getSettings().setBuiltInZoomControls(false);
-                
+        
+        handle = new Handler();
+        
+        webview.setVisibility(View.GONE);
         webview.loadUrl(login);
+    }
+	
+	//javascript interface
+    private class JsInterface{
+    	// makes the webview visable
+    	public void showPage(){
+    		handle.post(new Runnable() {
+    			public void run() {
+    				webview.setVisibility(View.VISIBLE);
+    			}
+    		});
+    	}
     }
 	
 	@Override
@@ -200,18 +216,25 @@ public class portal extends Activity {
 	    	String url = webview.getUrl();
 	    	Log.d("URL equals", url);
 	    	if(url.equals("https://prod-web.neu.edu/webapp6/ISF/cardTxns.do")) {
+	    		webview.setVisibility(View.GONE);
 	    		webview.loadUrl(home);
 	    	} else if(url.contains((CharSequence)"displaylogin")) {
-				webview.loadUrl(login);
+	    		webview.setVisibility(View.GONE);
+	    		webview.loadUrl(login);
 			} else if(url.contains((CharSequence)"cp/home/next")) {
+				webview.setVisibility(View.GONE);
 				webview.loadUrl(home);
 			} else if(url.contains((CharSequence)"HuskyCard/CurrentBalance")) {
+				webview.setVisibility(View.GONE);
 				webview.loadUrl(home);
 			} else if(url.contains((CharSequence)"cardTxns.do?view=")) {
+				webview.setVisibility(View.GONE);
 				webview.loadUrl(transactions);
 			} else if(url.contains((CharSequence)"mail.google.com")) {
+				webview.setVisibility(View.GONE);
 				webview.loadUrl(home);
 			} else {
+				webview.setVisibility(View.GONE);
 				webview.goBack();
 			}
 	    	return true;
@@ -235,14 +258,14 @@ public class portal extends Activity {
 			formatPortal();
 		} else if(url.contains((CharSequence)"HuskyCard/CurrentBalance")) {
 			formatCurrBal();
-//		} else if((webview.findAll("Login Failed") != -1) || 
-//				(webview.findAll("Session timeout") != -1)) {
-//			Log.d("LoadMyNeuJs","login failed");
-//			webview.loadUrl(login);
+		} else if(url.contains((CharSequence)"jsp/misc")) {
+			Log.d("LoadMyNeuJs","something went wrong");
+			webview.loadUrl(login);
 		} else if(url.contains((CharSequence)"cardTxns.do")) {
 			formatTransactions();
 		} else {
 			Log.d("loadMyNeuJs", "called on other page");
+      	  	webview.setVisibility(View.VISIBLE);
 		}
 	}
 	

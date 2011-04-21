@@ -1,7 +1,7 @@
 TMyNEU iPhone
 v7
 r0
-t324885985.084099
+t325058606.708029
 cCheck dependencies
 cProcessInfoPlistFile "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU iPhone.app/Info.plist" MyNEU_Mobile-Info.plist
 cCpResource "build/Debug-iphonesimulator/MyNEU iPhone.app/accountbal.js" accountbal.js
@@ -246,7 +246,7 @@ s909
 
 CCheck dependencies
 r0
-lSLF07#2@18"Check dependencies324885984#324885984#0(0"0(0#1#0"8619505440#0"0#
+lSLF07#2@18"Check dependencies325058606#325058606#0(0"0(0#1#0"27866456492998768#0"0#
 
 CCompileC "build/MyNEU iPhone.build/Debug-iphonesimulator/MyNEU iPhone.build/Objects-normal/i386/MyNEU_MobileAppDelegate.o" "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileAppDelegate.m" normal i386 objective-c com.apple.compilers.gcc.4_2
 s324885473.753753

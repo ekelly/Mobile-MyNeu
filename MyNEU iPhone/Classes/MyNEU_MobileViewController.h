@@ -10,12 +10,16 @@
 
 @interface MyNEU_MobileViewController : UIViewController <UIWebViewDelegate> {
 	IBOutlet UIWebView *webView;
+	IBOutlet UIBarButtonItem *backButton;
+	IBOutlet UIActivityIndicatorView *spinner;
 }
 
-//-(IBAction) handleBack : (id)sender;
+-(IBAction) handleBack : (id)sender;
 -(IBAction) handleMenu : (id)sender;
 
 @property(nonatomic, retain) UIWebView *webView;
+@property(nonatomic, retain) UIBarButtonItem *backButton;
+@property(nonatomic, retain) UIActivityIndicatorView *spinner;
 
 @end
 

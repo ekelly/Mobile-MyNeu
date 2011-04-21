@@ -11,6 +11,8 @@
 @implementation MyNEU_MobileViewController
 
 @synthesize webView;
+@synthesize backButton;
+@synthesize spinner;
 
 -(void) loadURL {
 	NSURL *url = [[NSURL alloc] initWithString: @"http://myneu.neu.edu/cp/home/displaylogin"];
@@ -46,6 +48,12 @@
 	NSLog(@"Loading %@.js", fileName);
 	[webView stringByEvaluatingJavaScriptFromString:jsString];
 	
+	NSLog(@"Cookies currently set:");
+	NSHTTPCookie *cookie;
+	for (cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
+		NSLog(@"<NSHTTPCookie %@>", cookie.name);
+	}
+	
 	[jsString release];
 	//[fileData release];
 	//[filePath release]; // causes crash when released
@@ -76,11 +84,20 @@
 	[webView setDelegate:self];
 	[webView setOpaque:NO];
 	[webView setScalesPageToFit:YES];
+
+	UIScrollView* sv = nil;
+	for(UIView* v in self.webView.subviews){
+		if([v isKindOfClass:[UIScrollView class] ]){
+			sv = (UIScrollView*) v;
+			//sv.scrollEnabled = NO;
+			sv.bounces = NO;
+		}
+	}
+	
 	//webView.backgroundColor = [UIColor clearColor];
 	
-	self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"Default.png"]];
-	
-	
+	//self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"Default.png"]];
+		
 	[self loadURL];
 }
 
@@ -108,72 +125,97 @@
 	return ([url rangeOfString:compare].location != NSNotFound);
 }
 
+-(BOOL) isLoggedIn {
+	NSHTTPCookie *cookie;
+	for (cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
+		if([cookie.name isEqualToString:@"usid"]) {
+			NSLog(@"Found a login cookie: %@", cookie);
+			return YES;
+		}
+	}
+	
+	return NO;
+}
+- (void) loadMenuIfLoggedIn {
+	if([self isLoggedIn]) {
+		[self loadJS:@"main"];
+	} else {
+		[self loadJS:@"login"];
+	}
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)wv {
+	NSLog(@"webViewDidStartLoad");
+	
+	[spinner startAnimating];
+	
+	wv.hidden = TRUE;
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)wv {
 	NSLog(@"webViewDidFinishLoad");
+	
+	[spinner stopAnimating];
+	
+	wv.hidden = FALSE;
 	
 	NSString *url = [[wv.request URL] absoluteString];
 	NSLog(@"<NSURLRequest %@>", url);
 	
-	NSString *filePath = [[NSBundle mainBundle]
+	/*NSString *filePath = [[NSBundle mainBundle]
 						  pathForResource:@"Default"
 						  ofType:@"png"
 						  inDirectory:@""];	
-	NSLog(@"Path to Default.png: %@", filePath);
+	NSLog(@"Path to Default.png: %@", filePath);*/
 	//[filePath release];
 	
-	/*
-	 Login: "displaylogin"
-	 Portal: "cp/home/next" "render.userLayoutRootNode.uP"
-	 Balance: "HuskyCard/CurrentBalance"
-	 Transactions: "cardTxns.do"
-	 */
 	[self loadJS:@"style"];
-	if([self urlContains:@"displaylogin"]) {
+	backButton.enabled = TRUE;
+	if([self urlContains:@"displaylogin"] ||
+	    [self urlContains:@"cp/home/login"] ||
+		[self urlContains:@"jsp/misc"]) {
 		NSLog(@"Login page");
-		[self loadJS:@"login"];
+		if([self isLoggedIn]) {
+			NSLog(@"Is logged in");
+			[self loadJS:@"main"];
+		} else {
+			[self loadJS:@"login"];
+		}
+		
+		backButton.enabled = FALSE;
 	} else if([self urlContains:@"cp/home/next"] ||
 			   [self urlContains:@"render.userLayoutRootNode.uP"]) {
 		[self loadJS:@"main"];
+		backButton.enabled = FALSE;
 	} else if([self urlContains:@"HuskyCard/CurrentBalance"]) {
-		[self loadJS:@"accountbal"];
-	} else if([self urlContains:@"cardTxns.do?view="]) {
-		[self loadJS:@"transmenu"];
+		//[self loadJS:@"accountbal"];
 	} else if([self urlContains:@"cardTxns.do"]) {
+		[self loadJS:@"transmenu"];
+	} else if([self urlContains:@"cardTxns.do?view="]) {
 		[self loadJS:@"transactions"];
 	} else {
 		NSLog(@"Loading unknown URL");
 		//[self loadJS:@"main"];
 	}
+}
+
+- (void) handleBack:(id)sender {
+	NSLog(@"Tapped Back Button");
 	
-	/*if(url.contains((CharSequence)"displaylogin") || (url == "")) {
-		Log.d("loadMyNeuJs","called on login");
-		reformatLogin();
-	} else if(url.contains((CharSequence)"cp/home/next") || 
-			  url.contains((CharSequence) "render.userLayoutRootNode.uP?")) {
-		Log.d("loadMyNeuJs","called on portal");
-		Log.d("JS=", portalJs);
-		formatPortal();
-	} else if(url.contains((CharSequence)"HuskyCard/CurrentBalance")) {
-		formatCurrBal();
-		//		} else if((webview.findAll("Login Failed") != -1) || 
-		//				(webview.findAll("Session timeout") != -1)) {
-		//			Log.d("LoadMyNeuJs","login failed");
-		//			webview.loadUrl(login);
-	} else if(url.contains((CharSequence)"cardTxns.do")) {
-		formatTransactions();
+	if([self urlContains:@"HuskyCard/CurrentBalance"]) {
+		[self loadJS:@"main"];
+	} else if([self urlContains:@"cardTxns.do"]) {
+		[self loadJS:@"main"];
+	} else if([self urlContains:@"cardTxns.do?view="]) {
+		[self loadJS:@"transmenu"];
 	} else {
-		Log.d("loadMyNeuJs", "called on other page");
-	}*/
-	//[self loadJS:@"myneu_mobile"];
+		[self loadMenuIfLoggedIn];
+	}
 }
-
-//- (void) handleBack:(id)sender {
-//}
 - (void) handleMenu:(id)sender {
-	NSLog(@"Hit 'Menu' Button");
-	[self loadJS:@"main"];
+	NSLog(@"Tapped Menu Button");
+	[self loadMenuIfLoggedIn];
 }
-
 
 - (void)dealloc {
     [super dealloc];

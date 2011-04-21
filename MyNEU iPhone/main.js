@@ -16,18 +16,18 @@ function portal() {
 	for(var i in urls) {
 		links.push(document.createElement('a'));
 		links[links.length-1].href = urls[i];
-		links[links.length-1].innerHTML = '<div style="width:100%; height: 50px; background-color: lightgrey; text-align: center; line-height: 50px; margin-bottom: 10px;">' + i + '</div>';
+		links[links.length-1].innerHTML = '<div style="width:100%; height: 50px; text-align: center; line-height: 50px; margin-bottom: 10px; -webkit-border-radius: 5px; color: white; font-weight: bold; text-shadow: 1px 1px #666; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C44), color-stop(100%,#933));">' + i + '</div>';
 		document.body.appendChild(links[links.length-1]);
 		// document.body.appendChild(document.createElement('br'));
 	}
     
     // Add space for the logout button
 	//document.body.appendChild(document.createElement('br'));
-	document.body.appendChild(document.createElement('br'));
+	/*document.body.appendChild(document.createElement('br'));
 	var logout = 'http://myneu.neu.edu/cp/ip/login?sys=was&url=http://myneu.neu.edu/up/Logout';
 	var lo = document.createElement('a')
 	lo.href = logout;
 	lo.innerHTML = 'Logout';
-	document.body.appendChild(lo);
+	document.body.appendChild(lo);*/
 }
 portal();

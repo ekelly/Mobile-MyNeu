@@ -73,19 +73,23 @@ public class portal extends Activity {
 			"		for(var i in urls) {\n" + 
 			"			links.push(document.createElement('a'));\n" + 
 			"			links[links.length-1].href = urls[i];\n" + 
-			"			links[links.length-1].innerHTML = '<div style=\"width:100%; height: 50px; background-color: lightgrey; text-align: center; line-height: 50px; margin-bottom: 10px;\">' + i + '</div>';\n" + 
-			"			document.body.appendChild(links[links.length-1]);\n" + 
-			"			// document.body.appendChild(document.createElement('br'));\n" + 
+			"			links[links.length-1].innerHTML = '<div style=\"width:100%; height: 50px; text-align: center; line-height: 50px;" + 
+			"			margin-bottom: 10px; -webkit-border-radius: 5px; color: white; font-weight: bold; text-shadow: 1px 1px #666;" + 
+			"			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2b88d9), color-stop(100%,#3b679e));" +
+			"				\">' + i + '</div>';\n" +
+			"			document.body.appendChild(links[links.length-1]);" +
 			"		}\n" + 
 			"        \n" + 
-			"        // Add space for the logout button\n" + 
+			"        // Add space for the Back button\n" + 
 			"		// document.body.appendChild(document.createElement('br'));\n" + 
 			"		document.body.appendChild(document.createElement('br'));\n" + 
 			"		var back = 'http://myneu.neu.edu/render.userLayoutRootNode.uP?uP_root=root';\n" + 
 			"		var lo = document.createElement('a');\n" + 
 			"		lo.href = back;\n" + 
-			"		lo.innerHTML = '<div style=\"width:100%; height: 50px; border: 1px solid red; " +
-			"text-color: black; text-align: center; line-height: 50px; margin-bottom: 10px;\">Back</div>';\n" + 
+			"		lo.innerHTML = '<div style=\"width:100%; height: 50px; " +
+			"		-webkit-border-radius: 5px; color: white; font-weight: bold; text-shadow: 1px 1px #666;" + 
+			"		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#999), color-stop(100%,#333));" +
+			"		text-align: center; line-height: 50px; margin-bottom: 10px;\">Back</div>';\n" + 
 			"		document.body.appendChild(lo);\n" +
 			"}\n" +
 			"transMenu();\n" +
@@ -98,30 +102,20 @@ public class portal extends Activity {
 			"        document.body.style.margin = '20px';\n" + 
 			"		links = [];\n" + 
 			"		urls = {\n" + 
-			"			//'Accounts': \"javascript:OpenWinNEU(\\'http://myneu.neu.edu/cp/ip/login?sys=was&url=https://prod-web.neu.edu/webapp6/HuskyCard/CurrentBalance/secure/retrieve/main.do\\');\",\n" + 
 			"			'Accounts': 'http://myneu.neu.edu/cp/ip/login?sys=was&url=https://prod-web.neu.edu/webapp6/HuskyCard/CurrentBalance/secure/retrieve/main.do',\n" + 
 			"			'Transactions': 'http://myneu.neu.edu/cp/ip/login?sys=was&url=https://prod-web.neu.edu/webapp/ISF/cardTxns.do',\n" +
 			"			'Mail': 'http://myneu.neu.edu/cp/ip/login?sys=google&url=http://mail.google.com/a/husky.neu.edu',\n" + 
-			"//			'Blackboard': 'http://myneu.neu.edu/cp/ip/login?sys=was&url=http://blackboard.neu.edu',\n" + 
-			"//			'Schedule': 'http://myneu.neu.edu/cp/ip/login?sys=was&url=https://bnr8ssbp.neu.edu/udcprod8/bwskfshd.P_CrseSchdDetl',\n" + 
 			"		};\n" + 
 			"		// write new content\n" + 
 			"		for(var i in urls) {\n" + 
 			"			links.push(document.createElement('a'));\n" + 
 			"			links[links.length-1].href = urls[i];\n" + 
-			"			links[links.length-1].innerHTML = '<div style=\"width:100%; height: 50px; background-color: lightgrey; text-align: center; line-height: 50px; margin-bottom: 10px;\">' + i + '</div>';\n" + 
+			"			links[links.length-1].innerHTML = '<div style=\"width:100%; height: 50px; text-align: center; line-height: 50px;" +
+			"			margin-bottom: 10px; -webkit-border-radius: 5px; color: white; font-weight: bold; text-shadow: 1px 1px #666;" + 
+			"			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2b88d9), color-stop(100%,#3b679e));" +
+			"				\">' + i + '</div>';\n" + 
 			"			document.body.appendChild(links[links.length-1]);\n" + 
-			"			// document.body.appendChild(document.createElement('br'));\n" + 
 			"		}\n" + 
-			"        \n" + 
-			"        // Add space for the logout button\n" + 
-			"		//document.body.appendChild(document.createElement('br'));\n" + 
-			"		document.body.appendChild(document.createElement('br'));\n" + 
-			"		var logout = 'http://myneu.neu.edu/cp/ip/login?sys=was&url=http://myneu.neu.edu/up/Logout';\n" + 
-			"		var lo = document.createElement('a')\n" + 
-			"		lo.href = logout;\n" + 
-			"		lo.innerHTML = '<div style=\"width:100%; height: 50px; border: 1px solid red; text-color: black; text-align: center; line-height: 50px; margin-bottom: 10px;\">Logout</div>';\n" + 
-			"		document.body.appendChild(lo);\n" + 
 			"}\n" + 
 			"portal();\n" +
 			"android.showPage();";
@@ -197,8 +191,6 @@ public class portal extends Activity {
         
         handle = new Handler();
         
-        //webview.setVisibility(View.GONE);
-//        webview.setBackgroundColor(0);
         webview.loadUrl(login);
     }
 	
@@ -287,7 +279,6 @@ public class portal extends Activity {
 
 	private void formatCurrBal() {
 		webview.loadUrl("javascript:" + currBalJs);
-		Log.d("currBalJs",currBalJs);
 		Log.d("formatCurrBal", "called");
 	}
 
@@ -298,7 +289,6 @@ public class portal extends Activity {
 	
 	public void formatPortal() {
 		webview.loadUrl("javascript:" + portalJs);
-//		Log.d("javascript:", portalJs);
 		Log.d("formatPortal","ran");
 	}
 
@@ -306,23 +296,12 @@ public class portal extends Activity {
 	public void onConfigurationChanged(Configuration newConfig) {
 	    super.onConfigurationChanged(newConfig);
 	}
-//	
-//	@Override
-//	protected void onSaveInstanceState(Bundle outState) {
-//	      webview.saveState(outState);
-//	}
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
        super.onCreateOptionsMenu(menu);
        MenuInflater inflater = getMenuInflater();
-       inflater.inflate(R.menu.menu, menu);
-       
-       CookieManager mgr = CookieManager.getInstance();
-       if(mgr.hasCookies()) {
-    	   menu.getItem(0).setEnabled(false);
-       }
-       
+       inflater.inflate(R.menu.menu, menu);       
        return true;
     }
 	

@@ -13,7 +13,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.webkit.CookieManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -31,10 +30,6 @@ public class portal extends Activity {
 	Handler handle;
 	
 	// Javascript code to run
-//	String background =
-////		"if (document.body){\n" + 
-//		"document.body.background = " + "file:///android_asset/background_plain.png" + ";\n";
-////		"}";
 	String loginJs = 
 			"function login() {\n" + 
 			"/* LOGIN FORM\n" + 
@@ -57,11 +52,12 @@ public class portal extends Activity {
 			"}\n" +
 			"login();\n" + 
 			"android.showPage();\n";
-	String transMenu = "function transMenu() {\n" +
+	String transMenu = 
+			"function transMenu() {\n" +
 			"/* ACCOUNTS MENU */\n" + 
 			"	\n" + 
-			"        document.body = document.createElement('body');\n" + 
-			"        document.body.style.margin = '20px';\n" + 
+			"       document.body = document.createElement('body');\n" + 
+			"       document.body.style.margin = '20px';\n" + 
 			"		links = [];\n" + 
 			"		urls = {\n" + 
 			"			'Husky Dollars': 'https://prod-web.neu.edu/webapp6/ISF/cardTxns.do?view=svc&page=0&sort=',\n" + 
@@ -75,12 +71,11 @@ public class portal extends Activity {
 			"			links[links.length-1].href = urls[i];\n" + 
 			"			links[links.length-1].innerHTML = '<div style=\"width:100%; height: 50px; text-align: center; line-height: 50px;" + 
 			"			margin-bottom: 10px; -webkit-border-radius: 5px; color: white; font-weight: bold; text-shadow: 1px 1px #666;" + 
-			"			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2b88d9), color-stop(100%,#3b679e));" +
+			"			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C44), color-stop(100%,#933));" +
 			"				\">' + i + '</div>';\n" +
 			"			document.body.appendChild(links[links.length-1]);" +
 			"		}\n" + 
-			"        \n" + 
-			"        // Add space for the Back button\n" + 
+			"       // Add space for the Back button\n" + 
 			"		// document.body.appendChild(document.createElement('br'));\n" + 
 			"		document.body.appendChild(document.createElement('br'));\n" + 
 			"		var back = 'http://myneu.neu.edu/render.userLayoutRootNode.uP?uP_root=root';\n" + 
@@ -92,14 +87,17 @@ public class portal extends Activity {
 			"		text-align: center; line-height: 50px; margin-bottom: 10px;\">Back</div>';\n" + 
 			"		document.body.appendChild(lo);\n" +
 			"}\n" +
-			"transMenu();\n" +
+			"transMenu();\n" + 
 			"android.showPage();";
 	String portalJs = 
-		"function portal() {\n" + 
+			"function portal() {\n" + 
 			"/* MAIN MENU */\n" + 
 			"	\n" + 
-			"        document.body = document.createElement('body');\n" + 
-			"        document.body.style.margin = '20px';\n" + 
+			"       document.body = document.createElement('body');\n" + 
+			"       document.body.style.margin = '20px';\n" + 
+			"		for(var i = 0; i < document.styleSheets.length - 1; i++) {\n" + 
+			"			document.styleSheets[i] = null;\n" + 
+			"		}\n" + 
 			"		links = [];\n" + 
 			"		urls = {\n" + 
 			"			'Accounts': 'http://myneu.neu.edu/cp/ip/login?sys=was&url=https://prod-web.neu.edu/webapp6/HuskyCard/CurrentBalance/secure/retrieve/main.do',\n" + 
@@ -112,12 +110,12 @@ public class portal extends Activity {
 			"			links[links.length-1].href = urls[i];\n" + 
 			"			links[links.length-1].innerHTML = '<div style=\"width:100%; height: 50px; text-align: center; line-height: 50px;" +
 			"			margin-bottom: 10px; -webkit-border-radius: 5px; color: white; font-weight: bold; text-shadow: 1px 1px #666;" + 
-			"			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2b88d9), color-stop(100%,#3b679e));" +
+			"			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C44), color-stop(100%,#933));" +
 			"				\">' + i + '</div>';\n" + 
 			"			document.body.appendChild(links[links.length-1]);\n" + 
 			"		}\n" + 
 			"}\n" + 
-			"portal();\n" +
+			"portal();\n" + 
 			"android.showPage();";
 	String currBalJs = 
 		"function currBal() {\n" + 
@@ -136,7 +134,7 @@ public class portal extends Activity {
 		"        document.body.appendChild(tables[i]);\n" + 
 		"    }\n" + 
 		"}\n" + 
-		"currBal();\n" +
+		"currBal();\n" + 
 		"android.showPage();";
 	String formatTransactionPagesJs = 
 		"function transactions() {\n" + 
@@ -150,7 +148,7 @@ public class portal extends Activity {
 		"    t.appendChild(tb);\n" + 
 		"    document.body.appendChild(t);\n" + 
 		"}\n" + 
-		"transactions();\n" +
+		"transactions();\n" + 
 		"android.showPage();";
 	
 	@Override

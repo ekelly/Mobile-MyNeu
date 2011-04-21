@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mobile MyNeu</string>
+    <string name="app_name">MyNeu</string>
     <string name="home">Home</string>
     <string name="logout">Logout</string>
 </resources>

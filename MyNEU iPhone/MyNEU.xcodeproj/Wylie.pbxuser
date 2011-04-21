@@ -29,9 +29,9 @@
 	};
 	28D7ACF70DDB3853001CB0EB /* MyNEU_MobileViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {777, 2951}}";
-			sepNavSelRange = "{3595, 0}";
-			sepNavVisRange = "{2989, 826}";
+			sepNavIntBoundsRect = "{{0, 0}, {612, 2808}}";
+			sepNavSelRange = "{5178, 0}";
+			sepNavVisRange = "{4755, 510}";
 			sepNavWindowFrame = "{{38, 111}, {918, 891}}";
 		};
 	};
@@ -395,7 +395,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1209, 4264}}";
 			sepNavSelRange = "{7036, 0}";
-			sepNavVisRange = "{4434, 2757}";
+			sepNavVisRange = "{4624, 2709}";
 		};
 	};
 	7D13481A13604CFF00573835 /* PBXTextBookmark */ = {

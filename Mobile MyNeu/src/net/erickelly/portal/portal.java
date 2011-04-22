@@ -12,10 +12,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.EditText;
 import android.graphics.Bitmap;
 
 public class portal extends Activity {
@@ -25,15 +28,21 @@ public class portal extends Activity {
 	private String home = "http://myneu.neu.edu/render.userLayoutRootNode.uP?uP_root=root";
 	private String logout = "http://myneu.neu.edu/cp/ip/login?sys=was&url=http://myneu.neu.edu/up/Logout";
 	private String transactions = "http://myneu.neu.edu/cp/ip/login?sys=was&url=https://prod-web.neu.edu/webapp/ISF/cardTxns.do";
+	private Boolean gotUUID;
 	
 	ProgressDialog dialog;
 	Handler handle;
+	Button loginButton;
+	EditText username;
+	EditText password;
 	
 	// Javascript code to run
+	String styleJs =
+		"document.body.style.padding = \"0 5%\";\n" + 
+		"document.body.style.background = \"#eee\";\n";
 	String loginJs = 
 			"function login() {\n" + 
-			"/* LOGIN FORM\n" + 
-			"		   USING SCRIPT FROM \"MyNEU PROPER LOGIN v0.6\" BY brainonfire.net */\n" + 
+			"// LOGIN FORM USING SCRIPT FROM \"MyNEU PROPER LOGIN v0.6\" BY brainonfire.net \n" + 
 			"	\n" + 
 			"		var uuid = /document\\.cplogin\\.uuid\\.value=\"([0-9a-f-]{36})\";/.exec(document.getElementsByTagName('head')[0].innerHTML)[1];\n" + 
 			"		\n" + 
@@ -41,17 +50,24 @@ public class portal extends Activity {
 			"		var submitTo_safe = submitTo.replace(/\"/g, '&quot;');\n" + 
 			"		\n" + 
 			"		var properForm =\n" + 
-			"		'<form action=\"%FormAction%\" method=\"post\"> \\\n" + 
-			"			<label>Username: <input type=\"text\" name=\"user\" value=\"\" /></label><br> \\\n" + 
-			"			<label>Password: <input type=\"password\" name=\"pass\" /></label><br> \\\n" + 
-			"			<input type=\"hidden\" name=\"uuid\" value=\"%UUID%\" /> \\\n" + 
-			"			<button style=\"width:100%; height:50px; margin-top:20px;\">Login</button> \\\n" + 
+			"		'<form action=\"%FormAction%\" method=\"post\" id=\"loginform\"> \\\n" + 
+			"		<input type=\"text\" name=\"user\" value=\"\" placeholder=\"MyNEU Username\" style=\"width: 100%; font-size: 18px;\"/><br> \\\n" + 
+			"		<input type=\"password\" name=\"pass\" placeholder=\"Password\" style=\"width: 100%; font-size: 18px;\"/><br> \\\n" + 
+			"		<input type=\"hidden\" name=\"uuid\" value=\"%UUID%\" /> \\\n" + 
+			"		<button style=\"width:100%; height: 50px; font-size: 18px; margin-top:20px;\">Login</button> \\\n" + 
 			"		</form>'.replace('%FormAction%', submitTo_safe).replace('%UUID%', uuid);\n" + 
 			"		\n" + 
 			"		document.body.innerHTML = properForm;\n" + 
 			"}\n" +
-			"login();\n" + 
+			"login();\n" + styleJs +
 			"android.showPage();\n";
+	/*
+	String loginJs = 
+		"document.body = document.createElement('body');\n" + 
+		// will not work due to 'security issues'
+		// see: http://stackoverflow.com/questions/5649111/android-webview-loading-javascript-file-in-assets-folder 
+		"document.body.background = 'file:///android_asset/background_plain.png';\n" +
+		"android.showPage();"; */
 	String transMenu = 
 			"function transMenu() {\n" +
 			"/* ACCOUNTS MENU */\n" + 
@@ -87,7 +103,7 @@ public class portal extends Activity {
 			"		text-align: center; line-height: 50px; margin-bottom: 10px;\">Back</div>';\n" + 
 			"		document.body.appendChild(lo);\n" +
 			"}\n" +
-			"transMenu();\n" + 
+			"transMenu();\n" + styleJs +
 			"android.showPage();";
 	String portalJs = 
 			"function portal() {\n" + 
@@ -115,7 +131,7 @@ public class portal extends Activity {
 			"			document.body.appendChild(links[links.length-1]);\n" + 
 			"		}\n" + 
 			"}\n" + 
-			"portal();\n" + 
+			"portal();\n" + styleJs + 
 			"android.showPage();";
 	String currBalJs = 
 		"function currBal() {\n" + 
@@ -134,7 +150,7 @@ public class portal extends Activity {
 		"        document.body.appendChild(tables[i]);\n" + 
 		"    }\n" + 
 		"}\n" + 
-		"currBal();\n" + 
+		"currBal();\n" + styleJs +
 		"android.showPage();";
 	String formatTransactionPagesJs = 
 		"function transactions() {\n" + 
@@ -148,18 +164,17 @@ public class portal extends Activity {
 		"    t.appendChild(tb);\n" + 
 		"    document.body.appendChild(t);\n" + 
 		"}\n" + 
-		"transactions();\n" + 
+		"transactions();\n" +
 		"android.showPage();";
 	
 	@Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+        // Add progress bar
         getWindow().requestFeature(Window.FEATURE_PROGRESS);
-        
         setContentView(R.layout.main);
         
-        // Set View
+        // Set Views
         webview = (WebView) findViewById(R.id.webView1);
         
         // Set up webview

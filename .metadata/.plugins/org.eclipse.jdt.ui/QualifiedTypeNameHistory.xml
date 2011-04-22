@@ -5,4 +5,10 @@
 <fullyQualifiedTypeName name="android.os.Handler"/>
 <fullyQualifiedTypeName name="net.erickelly.portal.R.drawable"/>
 <fullyQualifiedTypeName name="android.webkit.CookieManager"/>
+<fullyQualifiedTypeName name="android.webkit.WebResourceResponse"/>
+<fullyQualifiedTypeName name="android.widget.Button"/>
+<fullyQualifiedTypeName name="android.widget.EditText"/>
+<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
+<fullyQualifiedTypeName name="net.erickelly.portal.R.id"/>
+<fullyQualifiedTypeName name="net.erickelly.portal.R.color"/>
 </qualifiedTypeNameHistroy>

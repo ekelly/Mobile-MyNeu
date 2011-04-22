@@ -1,4 +1,4 @@
-#Tue Apr 19 02:07:47 EDT 2011
+#Fri Apr 22 01:32:05 EDT 2011
 emulatorControl.track.first=128
 emulatorControl.track.count=32
 threadPanel.stack.col4=38
@@ -21,7 +21,7 @@ com.android.ide.eclipse.ddms.logcat.level=13
 com.android.ide.eclipse.ddms.logcat.tag=54
 emulatorControl.waypoint.desc=98
 devicePanel.Col4=67
-com.android.ide.eclipse.ddms.logcat.message=906
+com.android.ide.eclipse.ddms.logcat.message=1071
 devicePanel.Col1=40
 devicePanel.Col0=105
 emulatorControl.waypoint.elevation=50

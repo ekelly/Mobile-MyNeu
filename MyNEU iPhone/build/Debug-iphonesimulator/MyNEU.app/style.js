@@ -10,9 +10,11 @@ for(var sheet in document.styleSheets) {
 	}
 }
 
-document.body.style.padding = "0 5%";
+if(window.location.href.indexOf("mail.google.com") == -1) {
+	document.body.style.padding = "0 5%";
 
-document.body.style.background = "#eee";
+	document.body.style.background = "#eee";
+}
 
 //alert(document.styleSheets[1]);
 

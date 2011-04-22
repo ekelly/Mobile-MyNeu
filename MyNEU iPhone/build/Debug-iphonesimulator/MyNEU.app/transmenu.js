@@ -11,10 +11,16 @@ function transMenu() {
 	};
 	// write new content
 	for(var i in urls) {
-		links.push(document.createElement('a'));
+		var link = document.createElement('div');
+		var innerLink =
+		'<a href="' + urls[i] + '" style="display: block; width:100%; line-height: 40px; text-align: center; margin-bottom: 10px; -webkit-border-radius: 5px; border: 1px solid #000; color: #333; font-family: Verdana, sans-serif; font-size: 18px; font-weight: bold; text-decoration: none; text-shadow: 0 1px #fff; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#E5E5E5), color-stop(50%,#D6D6D6), color-stop(51%,#C6C6C6), color-stop(100%,#DBDBDB));">' + i + '</a>';
+		link.innerHTML = innerLink;
+		
+		document.body.appendChild(link);
+		/*links.push(document.createElement('a'));
 		links[links.length-1].href = urls[i];
-		links[links.length-1].innerHTML = '<div style="width:100%; height: 50px; text-align: center; line-height: 50px; margin-bottom: 10px; -webkit-border-radius: 5px; color: white; font-weight: bold; text-shadow: 1px 1px #666; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C44), color-stop(100%,#933));">' + i + '</div>';
-		document.body.appendChild(links[links.length-1]);
+		links[links.length-1].innerHTML = '<div style="display: block; width:100%; line-height: 40px; text-align: center; margin-bottom: 10px; -webkit-border-radius: 5px; border: 1px solid #000; color: #333; font-size: 18px; font-weight: bold; text-shadow: 0 1px #fff; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#E5E5E5), color-stop(50%,#D6D6D6), color-stop(51%,#C6C6C6), color-stop(100%,#DBDBDB));">' + i + '</div>';
+		document.body.appendChild(links[links.length-1]);*/
 	}
 	// Add space for the logout button
 	/*document.body.appendChild(document.createElement('br'));

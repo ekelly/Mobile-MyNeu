@@ -11,17 +11,22 @@
 @implementation MyNEU_MobileViewController
 
 @synthesize webView;
+@synthesize titleBar;
 @synthesize backButton;
 @synthesize spinner;
 
--(void) loadURL {
-	NSURL *url = [[NSURL alloc] initWithString: @"http://myneu.neu.edu/cp/home/displaylogin"];
+	
+-(void) loadURL:(NSString *)location {
+	NSURL *url = [[NSURL alloc] initWithString:location];
 	NSURLRequest *request = [[NSURLRequest alloc] initWithURL: url];
 	
 	[webView loadRequest: request];
 	
 	[request release];
 	[url release];
+}
+-(void) loadLoginURL {
+	[self loadURL:@"http://myneu.neu.edu/cp/home/displaylogin"];
 }
 
 -(void) showAlert:(NSString *)msg {
@@ -48,11 +53,11 @@
 	NSLog(@"Loading %@.js", fileName);
 	[webView stringByEvaluatingJavaScriptFromString:jsString];
 	
-	NSLog(@"Cookies currently set:");
+	/*NSLog(@"Cookies currently set:");
 	NSHTTPCookie *cookie;
 	for (cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
 		NSLog(@"<NSHTTPCookie %@>", cookie.name);
-	}
+	}*/
 	
 	[jsString release];
 	//[fileData release];
@@ -85,6 +90,11 @@
 	[webView setOpaque:NO];
 	[webView setScalesPageToFit:YES];
 
+	/*UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header.png"]];
+	NSLog(@"<UIImage %@", [UIImage imageNamed:@"header.png"]);
+	[titleBar insertSubview:img atIndex:0];
+	[img release];*/
+	
 	UIScrollView* sv = nil;
 	for(UIView* v in self.webView.subviews){
 		if([v isKindOfClass:[UIScrollView class] ]){
@@ -98,7 +108,7 @@
 	
 	//self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"Default.png"]];
 		
-	[self loadURL];
+	[self loadLoginURL];
 }
 
 // Override to allow orientations other than the default portrait orientation.
@@ -120,9 +130,12 @@
 	// e.g. self.myOutlet = nil;
 }
 
+- (BOOL)stringContains:(NSString *)first string:(NSString *)other {
+	return ([first rangeOfString:other].location != NSNotFound);
+}
 - (BOOL)urlContains:(NSString *)compare {
 	NSString *url = [[webView.request URL] absoluteString];
-	return ([url rangeOfString:compare].location != NSNotFound);
+	return [self stringContains:url string:compare];
 }
 
 -(BOOL) isLoggedIn {
@@ -138,23 +151,20 @@
 }
 - (void) loadMenuIfLoggedIn {
 	if([self isLoggedIn]) {
-		[self loadJS:@"main"];
+		[self loadURL:@"http://myneu.neu.edu/render.userLayoutRootNode.uP?uP_root=root"];
 	} else {
-		[self loadJS:@"login"];
+		[self loadLoginURL];
+		//[self loadJS:@"login"];
 	}
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)wv {
-	NSLog(@"webViewDidStartLoad");
-	
 	[spinner startAnimating];
 	
 	wv.hidden = TRUE;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)wv {
-	NSLog(@"webViewDidFinishLoad");
-	
 	[spinner stopAnimating];
 	
 	wv.hidden = FALSE;
@@ -169,12 +179,14 @@
 	NSLog(@"Path to Default.png: %@", filePath);*/
 	//[filePath release];
 	
-	[self loadJS:@"style"];
 	backButton.enabled = TRUE;
+	//if(![self urlContains:@"mail.google.com"]) {
+	[self loadJS:@"style"];
+	//}
 	if([self urlContains:@"displaylogin"] ||
 	    [self urlContains:@"cp/home/login"] ||
+		[self urlContains:@"logout"] ||
 		[self urlContains:@"jsp/misc"]) {
-		NSLog(@"Login page");
 		if([self isLoggedIn]) {
 			NSLog(@"Is logged in");
 			[self loadJS:@"main"];
@@ -188,26 +200,42 @@
 		[self loadJS:@"main"];
 		backButton.enabled = FALSE;
 	} else if([self urlContains:@"HuskyCard/CurrentBalance"]) {
-		//[self loadJS:@"accountbal"];
-	} else if([self urlContains:@"cardTxns.do"]) {
-		[self loadJS:@"transmenu"];
+		[self loadJS:@"accountbal"];
 	} else if([self urlContains:@"cardTxns.do?view="]) {
 		[self loadJS:@"transactions"];
+	} else if([self urlContains:@"cardTxns.do"]) {
+		[self loadJS:@"transmenu"];
 	} else {
 		NSLog(@"Loading unknown URL");
 		//[self loadJS:@"main"];
 	}
 }
 
+- (void) webViewDidFailLoadWithError:(UIWebView *)wv {
+	[spinner stopAnimating];
+	
+	NSLog(@"Error loading site <NSURlRequest %@>", [[wv.request URL] absoluteString]);
+}
+
+- (BOOL)webView:(UIWebView *)wv shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+	/*if([self stringContains:[[request URL] absoluteString] string:@"render.userLayoutRootNode.uP"]) {
+		NSLog(@"Preventing load on <NSURLRequest %@>", [[request URL] absoluteString]);
+		return NO;
+	}*/
+	
+	return YES;
+}
+
 - (void) handleBack:(id)sender {
 	NSLog(@"Tapped Back Button");
 	
-	if([self urlContains:@"HuskyCard/CurrentBalance"]) {
-		[self loadJS:@"main"];
+	/*if([self urlContains:@"HuskyCard/CurrentBalance"]) {
+		[self loadMenuIfLoggedIn];
 	} else if([self urlContains:@"cardTxns.do"]) {
-		[self loadJS:@"main"];
-	} else if([self urlContains:@"cardTxns.do?view="]) {
-		[self loadJS:@"transmenu"];
+		[self loadMenuIfLoggedIn];
+	} else*/
+	if([self urlContains:@"cardTxns.do?view="]) {
+		[self loadURL:@"http://myneu.neu.edu/cp/ip/login?sys=was&url=https://prod-web.neu.edu/webapp/ISF/cardTxns.do"];
 	} else {
 		[self loadMenuIfLoggedIn];
 	}

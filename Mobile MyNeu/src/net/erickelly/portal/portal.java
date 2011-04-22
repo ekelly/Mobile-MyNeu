@@ -3,7 +3,6 @@ package net.erickelly.portal;
 import android.app.Activity;
 
 import android.app.ProgressDialog;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -16,8 +15,6 @@ import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
-import android.widget.EditText;
 import android.graphics.Bitmap;
 
 public class portal extends Activity {
@@ -299,12 +296,12 @@ public class portal extends Activity {
 		webview.loadUrl("javascript:" + portalJs);
 		Log.d("formatPortal","ran");
 	}
-
+	/*
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 	    super.onConfigurationChanged(newConfig);
 	}
-	
+	*/
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
        super.onCreateOptionsMenu(menu);

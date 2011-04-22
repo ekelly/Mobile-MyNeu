@@ -30,9 +30,6 @@ public class portal extends Activity {
 	
 	ProgressDialog dialog;
 	Handler handle;
-	Button loginButton;
-	EditText username;
-	EditText password;
 	
 	// Javascript code to run
 	String styleJs =

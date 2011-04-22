@@ -309,6 +309,7 @@ public class portal extends Activity {
     		case R.id.logout:
     			webview.setVisibility(View.GONE);
     			webview.loadUrl(logout);
+    			webview.setVisibility(View.GONE);
     			webview.loadUrl(login);
     			break;
     		case R.id.home:

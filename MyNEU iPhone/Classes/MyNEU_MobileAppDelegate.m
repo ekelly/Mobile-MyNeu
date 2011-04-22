@@ -68,6 +68,17 @@
 }
 
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+	if (!url) {  return NO; }
+	
+    NSString *URLString = [url absoluteString];
+    
+	NSLog(@"myneu-mobile://%@", URLString);
+	//[[NSUserDefaults standardUserDefaults] setObject:URLString forKey:@"url"];
+    //[[NSUserDefaults standardUserDefaults] synchronize];
+    return YES;
+}
+
 #pragma mark -
 #pragma mark Memory management
 

@@ -12,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -28,7 +27,6 @@ public class portal extends Activity {
 	private String home = "http://myneu.neu.edu/render.userLayoutRootNode.uP?uP_root=root";
 	private String logout = "http://myneu.neu.edu/cp/ip/login?sys=was&url=http://myneu.neu.edu/up/Logout";
 	private String transactions = "http://myneu.neu.edu/cp/ip/login?sys=was&url=https://prod-web.neu.edu/webapp/ISF/cardTxns.do";
-	private Boolean gotUUID;
 	
 	ProgressDialog dialog;
 	Handler handle;

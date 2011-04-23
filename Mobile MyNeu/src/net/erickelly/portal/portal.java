@@ -1,8 +1,13 @@
 package net.erickelly.portal;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 
 import android.app.ProgressDialog;
+import android.content.ContentProviderOperation.Builder;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -15,6 +20,7 @@ import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 import android.graphics.Bitmap;
 
 public class portal extends Activity {
@@ -27,6 +33,7 @@ public class portal extends Activity {
 	
 	ProgressDialog dialog;
 	Handler handle;
+	Context context;
 	
 	// Javascript code to run
 	String styleJs =
@@ -36,20 +43,19 @@ public class portal extends Activity {
 			"function login() {\n" + 
 			"// LOGIN FORM USING SCRIPT FROM \"MyNEU PROPER LOGIN v0.6\" BY brainonfire.net \n" + 
 			"	\n" + 
-			"		var uuid = /document\\.cplogin\\.uuid\\.value=\"([0-9a-f-]{36})\";/.exec(document.getElementsByTagName('head')[0].innerHTML)[1];\n" + 
-			"		\n" + 
-			"		var submitTo = document.getElementsByName('cplogin')[0].action;\n" + 
-			"		var submitTo_safe = submitTo.replace(/\"/g, '&quot;');\n" + 
-			"		\n" + 
-			"		var properForm =\n" + 
-			"		'<form action=\"%FormAction%\" method=\"post\" id=\"loginform\"> \\\n" + 
-			"		<input type=\"text\" name=\"user\" value=\"\" placeholder=\"MyNEU Username\" style=\"width: 100%; font-size: 18px;\"/><br> \\\n" + 
-			"		<input type=\"password\" name=\"pass\" placeholder=\"Password\" style=\"width: 100%; font-size: 18px;\"/><br> \\\n" + 
+			"	var uuid = /document\\.cplogin\\.uuid\\.value=\"([0-9a-f-]{36})\";/.exec(document.getElementsByTagName('head')[0].innerHTML)[1];\n" + 
+			"	\n" + 
+			"	var submitTo = document.getElementsByName('cplogin')[0].action;\n" + 
+			"	var submitTo_safe = submitTo.replace(/\"/g, '&quot;');\n" + 
+			"	\n" + 
+			"	var properForm =\n" + 
+			"		'<form action=\"%FormAction%\" method=\"post\" id=\"loginform\" onSubmit=\"showUsername()\"> \\\n" + 
+			"		<input type=\"text\" name=\"user\" id=\"username\" value=\"\" placeholder=\"MyNEU Username\" style=\"width: 92%; font-size: 18px; margin-bottom: 5px;\"/><br> \\\n" + 
+			"		<input type=\"password\" name=\"pass\" placeholder=\"Password\" style=\"width: 92%; font-size: 18px;\"/><br> \\\n" + 
 			"		<input type=\"hidden\" name=\"uuid\" value=\"%UUID%\" /> \\\n" + 
 			"		<button style=\"width:100%; height: 50px; font-size: 18px; margin-top:20px;\">Login</button> \\\n" + 
 			"		</form>'.replace('%FormAction%', submitTo_safe).replace('%UUID%', uuid);\n" + 
-			"		\n" + 
-			"		document.body.innerHTML = properForm;\n" + 
+			"	document.body.innerHTML = properForm;\n" + 
 			"}\n" +
 			"login();\n" + styleJs +
 			"android.showPage();\n";
@@ -75,25 +81,19 @@ public class portal extends Activity {
 			"		};\n" + 
 			"		// write new content\n" + 
 			"		for(var i in urls) {\n" + 
-			"			links.push(document.createElement('a'));\n" + 
-			"			links[links.length-1].href = urls[i];\n" + 
-			"			links[links.length-1].innerHTML = '<div style=\"width:100%; height: 50px; text-align: center; line-height: 50px;" + 
-			"			margin-bottom: 10px; -webkit-border-radius: 5px; color: white; font-weight: bold; text-shadow: 1px 1px #666;" + 
-			"			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C44), color-stop(100%,#933));" +
-			"				\">' + i + '</div>';\n" +
-			"			document.body.appendChild(links[links.length-1]);" +
+			"			var link = document.createElement('div');\n" + 
+			"			var innerLink =\n" + 
+			"			'<a href=\"' + urls[i] + '\" style=\"display: block; width:100%; " +
+			"				line-height: 40px; text-align: center; margin-bottom: 10px; " +
+			"				-webkit-border-radius: 5px; border: 1px solid #000; color: #333; " +
+			"				font-family: Verdana, sans-serif; font-size: 18px; font-weight: bold; " +
+			"				text-decoration: none; text-shadow: 0 1px #fff; " +
+			"				background: -webkit-gradient(linear, left top, left bottom, " +
+			"					color-stop(0%,#E5E5E5), color-stop(50%,#D6D6D6), " +
+			"					color-stop(51%,#C6C6C6), color-stop(100%,#DBDBDB));\">' + i + '</a>';\n" + 
+			"			link.innerHTML = innerLink;\n" + 
+			"			document.body.appendChild(link);" +
 			"		}\n" + 
-			"       // Add space for the Back button\n" + 
-			"		// document.body.appendChild(document.createElement('br'));\n" + 
-			"		document.body.appendChild(document.createElement('br'));\n" + 
-			"		var back = 'http://myneu.neu.edu/render.userLayoutRootNode.uP?uP_root=root';\n" + 
-			"		var lo = document.createElement('a');\n" + 
-			"		lo.href = back;\n" + 
-			"		lo.innerHTML = '<div style=\"width:100%; height: 50px; " +
-			"		-webkit-border-radius: 5px; color: white; font-weight: bold; text-shadow: 1px 1px #666;" + 
-			"		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#999), color-stop(100%,#333));" +
-			"		text-align: center; line-height: 50px; margin-bottom: 10px;\">Back</div>';\n" + 
-			"		document.body.appendChild(lo);\n" +
 			"}\n" +
 			"transMenu();\n" + styleJs +
 			"android.showPage();";
@@ -101,60 +101,63 @@ public class portal extends Activity {
 			"function portal() {\n" + 
 			"/* MAIN MENU */\n" + 
 			"	\n" + 
-			"       document.body = document.createElement('body');\n" + 
-			"       document.body.style.margin = '20px';\n" + 
-			"		for(var i = 0; i < document.styleSheets.length - 1; i++) {\n" + 
-			"			document.styleSheets[i] = null;\n" + 
-			"		}\n" + 
-			"		links = [];\n" + 
-			"		urls = {\n" + 
-			"			'Accounts': 'http://myneu.neu.edu/cp/ip/login?sys=was&url=https://prod-web.neu.edu/webapp6/HuskyCard/CurrentBalance/secure/retrieve/main.do',\n" + 
-			"			'Transactions': 'http://myneu.neu.edu/cp/ip/login?sys=was&url=https://prod-web.neu.edu/webapp/ISF/cardTxns.do',\n" +
-			"			'Mail': 'http://myneu.neu.edu/cp/ip/login?sys=google&url=http://mail.google.com/a/husky.neu.edu',\n" + 
-			"		};\n" + 
-			"		// write new content\n" + 
-			"		for(var i in urls) {\n" + 
-			"			links.push(document.createElement('a'));\n" + 
-			"			links[links.length-1].href = urls[i];\n" + 
-			"			links[links.length-1].innerHTML = '<div style=\"width:100%; height: 50px; text-align: center; line-height: 50px;" +
-			"			margin-bottom: 10px; -webkit-border-radius: 5px; color: white; font-weight: bold; text-shadow: 1px 1px #666;" + 
-			"			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C44), color-stop(100%,#933));" +
-			"				\">' + i + '</div>';\n" + 
-			"			document.body.appendChild(links[links.length-1]);\n" + 
-			"		}\n" + 
+			"	document.body = document.createElement('body');\n" + 
+			"   document.body.style.margin = '20px';\n" + 
+			"	links = [];\n" + 
+			"	urls = {\n" + 
+			"		'Accounts': 'http://myneu.neu.edu/cp/ip/login?sys=was&url=https://prod-web.neu.edu/webapp6/HuskyCard/CurrentBalance/secure/retrieve/main.do',\n" + 
+			"		'Transactions': 'http://myneu.neu.edu/cp/ip/login?sys=was&url=https://prod-web.neu.edu/webapp/ISF/cardTxns.do',\n" +
+			"		'Mail': 'http://myneu.neu.edu/cp/ip/login?sys=google&url=http://mail.google.com/a/husky.neu.edu',\n" + 
+			"	};\n" + 
+			"	for(var i in urls) {\n" + 
+			"		var link = document.createElement('div');\n" + 
+			"		var innerLink =\n" + 
+			"		'<a href=\"' + urls[i] + '\" style=\"display: block; width:100%; line-height: 40px; " +
+			"			text-align: center; margin-bottom: 10px; -webkit-border-radius: 5px; " +
+			"			border: 1px solid #000; color: #333; font-size: 18px; font-weight: bold; " +
+			"			text-shadow: 0 1px #fff; background: -webkit-gradient(linear, left top, left bottom, " +
+			"				color-stop(0%,#E5E5E5), color-stop(50%,#D6D6D6), color-stop(51%,#C6C6C6), " +
+			"				color-stop(100%,#DBDBDB));\">' + i + '</a>';\n" + 
+			"		link.innerHTML = innerLink;\n" + 
+			"		\n" + 
+			"		document.body.appendChild(link);" + 
+			"	}\n" +
+			"	// write new content\n" + 
 			"}\n" + 
 			"portal();\n" + styleJs + 
 			"android.showPage();";
 	String currBalJs = 
 		"function currBal() {\n" + 
 		"	var titles = [\"Husky Dollars\",\"Dining Dollars\",\"Free Print Allowance\",\"Laundry Bucks\"];\n" + 
-		"    var parent = document.getElementsByTagName('blockquote');\n" + 
-		"    var tables = [];\n" + 
-		"    for(var i = 0; i < parent.length; i++) {\n" + 
-		"        var t = parent[i].getElementsByTagName('table')[0];\n" + 
-		"        tables.push(t);\n" + 
-		"    }\n" + 
-		"    document.body = document.createElement('body');\n" + 
-		"    for(var i in titles) {\n" + 
-		"        var t = document.createElement('h3');\n" + 
-		"        t.innerHTML = titles[i]; \n" + 
-		"        document.body.appendChild(t);\n" + 
-		"        document.body.appendChild(tables[i]);\n" + 
-		"    }\n" + 
+		"   var parents = document.getElementsByTagName('blockquote');\n" + 
+		"   var tables = [];\n" + 
+		"   for(var i = 0; i < parents.length; i++) {\n" + 
+		"   	var t = parents[i].getElementsByTagName('table')[0];\n" + 
+		"       tables.push(t);\n" + 
+		"   }\n" + 
+		"   document.body = document.createElement('body');\n" + 
+		"   for(var i in titles) {\n" +
+        "		if(tables[i] != undefined) {\n" +
+        "			var t = document.createElement('h3');\n" +
+        "			t.innerHTML = titles[i];\n" +
+        "			document.body.appendChild(t);\n" +
+        "			document.body.appendChild(tables[i]);\n" +
+        "		}\n" +
+    	"	}\n" +
 		"}\n" + 
 		"currBal();\n" + styleJs +
 		"android.showPage();";
 	String formatTransactionPagesJs = 
 		"function transactions() {\n" + 
 		"	var start = document.getElementsByTagName('p')[3];\n" + 
-		"    var tablerows = start.getElementsByTagName('tr');\n" + 
-		"    document.body = document.createElement('body');\n" + 
-		"    var t = document.createElement('table');\n" + 
-		"    var tb = document.createElement('tbody');\n" + 
-		"    tb.appendChild(tablerows[0]);\n" + 
-		"    tb.appendChild(tablerows[1]);\n" + 
-		"    t.appendChild(tb);\n" + 
-		"    document.body.appendChild(t);\n" + 
+		"   var tablerows = start.getElementsByTagName('tr');\n" + 
+		"   document.body = document.createElement('body');\n" + 
+		"   var t = document.createElement('table');\n" + 
+		"   var tb = document.createElement('tbody');\n" + 
+		"   tb.appendChild(tablerows[0]);\n" + 
+		"   tb.appendChild(tablerows[1]);\n" + 
+		"   t.appendChild(tb);\n" + 
+		"   document.body.appendChild(t);\n" + 
 		"}\n" + 
 		"transactions();\n" +
 		"android.showPage();";
@@ -165,6 +168,7 @@ public class portal extends Activity {
         // Add progress bar
         getWindow().requestFeature(Window.FEATURE_PROGRESS);
         setContentView(R.layout.main);
+        context = this.getApplicationContext();
         
         // Set Views
         webview = (WebView) findViewById(R.id.webView1);
@@ -172,16 +176,24 @@ public class portal extends Activity {
         // Set up webview
         webview.setVerticalScrollBarEnabled(false);
         webview.setHorizontalScrollBarEnabled(false);
+        webview.getSettings().setBlockNetworkImage(true);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.addJavascriptInterface(new JsInterface(), "android");
         webview.setWebViewClient(new WebViewClient() {  
           @Override  
           public void onPageFinished(WebView view, String url){
+        	  Log.d("Loading MyNeu Js", url);
         	  loadMyNeuJs();
           }
           @Override
           public void onPageStarted(WebView view, String url, Bitmap favicon) {
-        	  webview.setVisibility(View.GONE);
+        	  if(isNetworkAvailable()) {
+        		  webview.setVisibility(View.GONE);
+        		  Log.d("URL request", url);
+        	  } else {
+        		  Toast.makeText(context, "Experiencing connectivity issues", Toast.LENGTH_LONG).show();
+        		  webview.stopLoading();
+        	  }
           }
           /* CAN POSSIBLY CUT OUT PAGE LOADING WITH shouldOverrideUrlLoading(Webview view, String url) */
         });
@@ -196,7 +208,7 @@ public class portal extends Activity {
         
         handle = new Handler();
         
-        webview.loadUrl(login);
+		webview.loadUrl(login);
     }
 	
 	//javascript interface
@@ -209,6 +221,14 @@ public class portal extends Activity {
     			}
     		});
     	}
+    	public void alert(final String msg){
+    		runOnUiThread(new Runnable() {
+    			public void run() {
+    				Toast t = Toast.makeText(context, msg, Toast.LENGTH_LONG);
+    				t.show();
+    			}
+    		});
+    	}
     }
 	
 	@Override
@@ -217,25 +237,18 @@ public class portal extends Activity {
 	    	String url = webview.getUrl();
 	    	Log.d("URL equals", url);
 	    	if(url.equals("https://prod-web.neu.edu/webapp6/ISF/cardTxns.do")) {
-	    		webview.setVisibility(View.GONE);
 	    		webview.loadUrl(home);
 	    	} else if(url.contains((CharSequence)"displaylogin")) {
-	    		webview.setVisibility(View.GONE);
 	    		webview.loadUrl(login);
 			} else if(url.contains((CharSequence)"cp/home/next")) {
-				webview.setVisibility(View.GONE);
 				webview.loadUrl(home);
 			} else if(url.contains((CharSequence)"HuskyCard/CurrentBalance")) {
-				webview.setVisibility(View.GONE);
 				webview.loadUrl(home);
 			} else if(url.contains((CharSequence)"cardTxns.do?view=")) {
-				webview.setVisibility(View.GONE);
 				webview.loadUrl(transactions);
 			} else if(url.contains((CharSequence)"mail.google.com")) {
-				webview.setVisibility(View.GONE);
 				webview.loadUrl(home);
 			} else {
-				webview.setVisibility(View.GONE);
 				webview.goBack();
 			}
 	    	return true;
@@ -246,8 +259,8 @@ public class portal extends Activity {
 	public void loadMyNeuJs() {
 //	  	dialog.dismiss();
 		String url = "";
-		if (webview.getOriginalUrl() != null) {
-			url = webview.getOriginalUrl();
+		if (webview.getUrl() != null) {
+			url = webview.getUrl();
 		}
 		Log.d("URL:", url);
 		if(url.contains((CharSequence)"displaylogin") || (url == "")) {
@@ -259,11 +272,13 @@ public class portal extends Activity {
 			Log.d("JS=", portalJs);
 			formatPortal();
 		} else if(url.contains((CharSequence)"HuskyCard/CurrentBalance")) {
+			Log.d("LoadMyNeuJs","called on Accounts");
 			formatCurrBal();
 		} else if(url.contains((CharSequence)"jsp/misc")) {
 			Log.d("LoadMyNeuJs","something went wrong");
 			webview.loadUrl(login);
 		} else if(url.contains((CharSequence)"cardTxns.do")) {
+			Log.d("loadMyNeuJs","called on transactions page");
 			formatTransactions();
 		} else {
 			Log.d("loadMyNeuJs", "called on other page");
@@ -295,6 +310,13 @@ public class portal extends Activity {
 	public void formatPortal() {
 		webview.loadUrl("javascript:" + portalJs);
 		Log.d("formatPortal","ran");
+	}
+	
+	private boolean isNetworkAvailable() {
+	    ConnectivityManager connectivityManager 
+	          = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+	    NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+	    return activeNetworkInfo != null;
 	}
 	/*
 	@Override

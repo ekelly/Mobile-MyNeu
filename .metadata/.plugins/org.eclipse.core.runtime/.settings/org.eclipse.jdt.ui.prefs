@@ -1,5 +1,7 @@
-#Fri Apr 22 03:00:06 EDT 2011
+#Fri Apr 22 18:37:18 EDT 2011
+sourceHoverBackgroundColor=255,255,225
 content_assist_proposals_foreground=0,0,0
+escapeStrings=true
 spelling_locale_initialized=true
 org.eclipse.jdt.ui.text.templates_migrated=true
 useAnnotationsPrefPage=true
@@ -10,9 +12,9 @@ org.eclipse.jdt.ui.editor.tab.width=
 fontPropagated=true
 org.eclipse.jdt.ui.javadoclocations.migrated=true
 proposalOrderMigrated=true
+content_assist_proposals_background=255,255,255
 org.eclipse.jdt.ui.formatterprofiles.version=11
 org.eclipse.jdt.internal.ui.navigator.layout=2
-content_assist_proposals_background=255,255,255
 content_assist_number_of_computers=15
 useQuickDiffPrefPage=true
 org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>

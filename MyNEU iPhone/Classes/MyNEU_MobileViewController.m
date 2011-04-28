@@ -15,7 +15,86 @@
 @synthesize backButton;
 @synthesize spinner;
 
+#pragma mark -
+#pragma mark Lifecycle methods
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    [super viewDidLoad];
 	
+	[webView setDelegate:self];
+	[webView setOpaque:NO];
+	[webView setScalesPageToFit:YES];
+	
+	/*UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header.png"]];
+	 NSLog(@"<UIImage %@", [UIImage imageNamed:@"header.png"]);
+	 [titleBar insertSubview:img atIndex:0];
+	 [img release];*/
+	
+	/* Prevents elastic scrolling webview */
+	UIScrollView* sv = nil;
+	for(UIView* v in self.webView.subviews){
+		if([v isKindOfClass:[UIScrollView class] ]){
+			sv = (UIScrollView*) v;
+			//sv.scrollEnabled = NO;
+			sv.bounces = NO;
+		}
+	}
+
+	HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+	HUD.delegate = self;
+	
+	//webView.backgroundColor = [UIColor clearColor];
+	
+	//self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"Default.png"]];
+	
+	[self loadLoginURL];
+}
+
+/*
+ // The designated initializer. Override to perform setup that is required before the view is loaded.
+ - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+ self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+ if (self) {
+ // Custom initialization
+ }
+ return self;
+ }
+ */
+
+/*
+ // Implement loadView to create a view hierarchy programmatically, without using a nib.
+ - (void)loadView {
+ }
+ */
+
+// Override to allow orientations other than the default portrait orientation.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for supported orientations
+    //return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	return YES;
+}
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+}
+
+- (void)dealloc {
+    [super dealloc];
+	self.webView = nil;
+}
+
+#pragma mark -
+#pragma mark Content Loading
+
 -(void) loadURL:(NSString *)location {
 	NSURL *url = [[NSURL alloc] initWithString:location];
 	NSURLRequest *request = [[NSURLRequest alloc] initWithURL: url];
@@ -54,81 +133,16 @@
 	[webView stringByEvaluatingJavaScriptFromString:jsString];
 	
 	/*NSLog(@"Cookies currently set:");
-	NSHTTPCookie *cookie;
-	for (cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
-		NSLog(@"<NSHTTPCookie %@>", cookie.name);
-	}*/
+	 NSHTTPCookie *cookie;
+	 for (cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
+	 NSLog(@"<NSHTTPCookie %@>", cookie.name);
+	 }*/
 	
 	[jsString release];
 	//[fileData release];
 	//[filePath release]; // causes crash when released
 }
 
-/*
-// The designated initializer. Override to perform setup that is required before the view is loaded.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
-	
-	[webView setDelegate:self];
-	[webView setOpaque:NO];
-	[webView setScalesPageToFit:YES];
-
-	/*UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header.png"]];
-	NSLog(@"<UIImage %@", [UIImage imageNamed:@"header.png"]);
-	[titleBar insertSubview:img atIndex:0];
-	[img release];*/
-	
-	UIScrollView* sv = nil;
-	for(UIView* v in self.webView.subviews){
-		if([v isKindOfClass:[UIScrollView class] ]){
-			sv = (UIScrollView*) v;
-			//sv.scrollEnabled = NO;
-			sv.bounces = NO;
-		}
-	}
-	
-	//webView.backgroundColor = [UIColor clearColor];
-	
-	//self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"Default.png"]];
-		
-	[self loadLoginURL];
-}
-
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    //return (interfaceOrientation == UIInterfaceOrientationPortrait);
-	return YES;
-}
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
 
 - (BOOL)stringContains:(NSString *)first string:(NSString *)other {
 	return ([first rangeOfString:other].location != NSNotFound);
@@ -154,9 +168,11 @@
 		[self loadURL:@"http://myneu.neu.edu/render.userLayoutRootNode.uP?uP_root=root"];
 	} else {
 		[self loadLoginURL];
-		//[self loadJS:@"login"];
 	}
 }
+
+#pragma mark -
+#pragma mark UIWebViewDelegate methods
 
 - (void)webViewDidStartLoad:(UIWebView *)wv {
 	[spinner startAnimating];
@@ -173,41 +189,43 @@
 	NSLog(@"<NSURLRequest %@>", url);
 	
 	/*NSString *filePath = [[NSBundle mainBundle]
-						  pathForResource:@"Default"
-						  ofType:@"png"
-						  inDirectory:@""];	
-	NSLog(@"Path to Default.png: %@", filePath);*/
+	 pathForResource:@"Default"
+	 ofType:@"png"
+	 inDirectory:@""];	
+	 NSLog(@"Path to Default.png: %@", filePath);*/
 	//[filePath release];
 	
 	backButton.enabled = TRUE;
 	//if(![self urlContains:@"mail.google.com"]) {
 	[self loadJS:@"style"];
 	//}
-	if([self urlContains:@"displaylogin"] ||
-	    [self urlContains:@"cp/home/login"] ||
-		[self urlContains:@"logout"] ||
-		[self urlContains:@"jsp/misc"]) {
-		if([self isLoggedIn]) {
-			NSLog(@"Is logged in");
-			[self loadJS:@"main"];
-		} else {
-			[self loadJS:@"login"];
-		}
-		
-		backButton.enabled = FALSE;
-	} else if([self urlContains:@"cp/home/next"] ||
-			   [self urlContains:@"render.userLayoutRootNode.uP"]) {
-		[self loadJS:@"main"];
-		backButton.enabled = FALSE;
-	} else if([self urlContains:@"HuskyCard/CurrentBalance"]) {
-		[self loadJS:@"accountbal"];
-	} else if([self urlContains:@"cardTxns.do?view="]) {
-		[self loadJS:@"transactions"];
-	} else if([self urlContains:@"cardTxns.do"]) {
-		[self loadJS:@"transmenu"];
+	if([self urlContains:@"logout"] ||
+	   [self urlContains:@"jsp/misc"]) {
+		[self loadLoginURL];
 	} else {
-		NSLog(@"Loading unknown URL");
-		//[self loadJS:@"main"];
+		if([self urlContains:@"displaylogin"] ||
+		   [self urlContains:@"cp/home/login"]) {
+			if([self isLoggedIn]) {
+				NSLog(@"Is logged in");
+				[self loadJS:@"main"];
+			} else {
+				[self loadJS:@"login"];
+			}
+			
+			backButton.enabled = FALSE;
+		} else if([self urlContains:@"cp/home/next"] ||
+				  [self urlContains:@"render.userLayoutRootNode.uP"]) {
+			[self loadJS:@"main"];
+			backButton.enabled = FALSE;
+		} else if([self urlContains:@"HuskyCard/CurrentBalance"]) {
+			[self loadJS:@"accountbal"];
+		} else if([self urlContains:@"cardTxns.do?view="]) {
+			[self loadJS:@"transactions"];
+		} else if([self urlContains:@"cardTxns.do"]) {
+			[self loadJS:@"transmenu"];
+		} else {
+			// DO NOTHING
+		}
 	}
 }
 
@@ -219,21 +237,19 @@
 
 - (BOOL)webView:(UIWebView *)wv shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
 	/*if([self stringContains:[[request URL] absoluteString] string:@"render.userLayoutRootNode.uP"]) {
-		NSLog(@"Preventing load on <NSURLRequest %@>", [[request URL] absoluteString]);
-		return NO;
-	}*/
+	 NSLog(@"Preventing load on <NSURLRequest %@>", [[request URL] absoluteString]);
+	 return NO;
+	 }*/
 	
 	return YES;
 }
 
+#pragma mark -
+#pragma mark Button Handlers
+
 - (void) handleBack:(id)sender {
 	NSLog(@"Tapped Back Button");
 	
-	/*if([self urlContains:@"HuskyCard/CurrentBalance"]) {
-		[self loadMenuIfLoggedIn];
-	} else if([self urlContains:@"cardTxns.do"]) {
-		[self loadMenuIfLoggedIn];
-	} else*/
 	if([self urlContains:@"cardTxns.do?view="]) {
 		[self loadURL:@"http://myneu.neu.edu/cp/ip/login?sys=was&url=https://prod-web.neu.edu/webapp/ISF/cardTxns.do"];
 	} else {
@@ -243,11 +259,6 @@
 - (void) handleMenu:(id)sender {
 	NSLog(@"Tapped Menu Button");
 	[self loadMenuIfLoggedIn];
-}
-
-- (void)dealloc {
-    [super dealloc];
-	self.webView = nil;
 }
 
 @end

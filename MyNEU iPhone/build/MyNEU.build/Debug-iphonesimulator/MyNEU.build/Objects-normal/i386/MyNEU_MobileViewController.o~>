@@ -1,0 +1,9 @@
+/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m: In function '-[MyNEU_MobileViewController viewDidLoad]':
+/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:44: error: 'HUD' undeclared (first use in this function)
+/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:44: error: (Each undeclared identifier is reported only once
+/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:44: error: for each function it appears in.)
+/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:44: error: 'MBProgressHUD' undeclared (first use in this function)
+/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:51: warning: 'MyNEU_MobileViewController' may not respond to '-loadLoginURL'
+/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:51: warning: (Messages without a matching method signature
+/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:51: warning: will be assumed to return 'id' and accept
+/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:51: warning: '...' as arguments.)

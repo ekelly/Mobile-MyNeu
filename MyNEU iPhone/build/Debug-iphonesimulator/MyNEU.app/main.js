@@ -14,7 +14,7 @@ function portal() {
 	for(var i in urls) {
 		var link = document.createElement('div');
 		var innerLink =
-		'<a href="' + urls[i] + '" style="display: block; width:100%; line-height: 40px; text-align: center; margin-bottom: 10px; -webkit-border-radius: 5px; border: 1px solid #000; color: #333; font-size: 18px; font-weight: bold; text-shadow: 0 1px #fff; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#E5E5E5), color-stop(50%,#D6D6D6), color-stop(51%,#C6C6C6), color-stop(100%,#DBDBDB));">' + i + '</a>';
+		'<a href="' + urls[i] + '" style="display: block; width:100%; line-height: 40px; text-align: center; margin-bottom: 15px; -webkit-border-radius: 5px; border: 1px solid #000; color: #333; font-size: 18px; font-weight: bold; text-shadow: 0 1px #fff; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#E5E5E5), color-stop(50%,#D6D6D6), color-stop(51%,#C6C6C6), color-stop(100%,#DBDBDB));">' + i + '</a>';
 		link.innerHTML = innerLink;
 		
 		document.body.appendChild(link);

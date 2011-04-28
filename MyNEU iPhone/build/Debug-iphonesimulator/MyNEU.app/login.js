@@ -12,7 +12,7 @@ var submitTo = document.getElementsByName('cplogin')[0].action;
 var submitTo_safe = submitTo.replace(/"/g, '&quot;');
 var properForm =
 									 '<form action="%FormAction%" method="post" id="loginform" onSubmit="showUsername()"> \
-									 <input type="text" name="user" id="username" value="" placeholder="MyNEU Username" style="width: 92%; font-size: 18px; margin-bottom: 5px;"/><br> \
+									 <input type="text" name="user" id="username" value="" placeholder="MyNEU Username" style="width: 92%; font-size: 18px; margin-bottom: 10px;"/><br> \
 									 <input type="password" name="pass" placeholder="Password" style="width: 92%; font-size: 18px;"/><br> \
 	<input type="hidden" name="uuid" value="%UUID%" /> \
 									 <button style="width:100%; font-size: 18px; margin-top:20px;">Login</button> \

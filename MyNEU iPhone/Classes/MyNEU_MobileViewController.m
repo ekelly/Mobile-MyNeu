@@ -41,8 +41,8 @@
 		}
 	}
 
-	HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-	HUD.delegate = self;
+	/*HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+	HUD.delegate = self;*/
 	
 	//webView.backgroundColor = [UIColor clearColor];
 	

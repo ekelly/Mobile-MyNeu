@@ -1,7 +1,7 @@
 TMyNEU
 v7
 r0
-t325543855.283961
+t328154726.939543
 cCheck dependencies
 cProcessInfoPlistFile "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/Info.plist" MyNEU_Mobile-Info.plist
 cCpResource build/Debug-iphonesimulator/MyNEU.app/accountbal.js accountbal.js
@@ -24,6 +24,7 @@ cProcessPCH /var/folders/rp/rpzNlOU4Fy8eV0YYsUcAuE+++TQ/-Caches-/com.apple.Xcode
 cCompileC build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/main.o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/main.m" normal i386 objective-c com.apple.compilers.gcc.4_2
 cCompileC build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MyNEU_MobileAppDelegate.o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileAppDelegate.m" normal i386 objective-c com.apple.compilers.gcc.4_2
 cCompileC build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MyNEU_MobileViewController.o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MBProgressHUD.o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MBProgressHUD.m" normal i386 objective-c com.apple.compilers.gcc.4_2
 cLd "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU" normal i386
 cGenerateDSYMFile "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app.dSYM" "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU"
 cTouch "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app"
@@ -145,9 +146,9 @@ s717
 i<UIKit/UIKit.h>
 
 N/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m
-c000000004DB740000000000000001B0A
-t1303855104
-s6922
+c000000004DDF06E60000000000001B0E
+t1306461926
+s6926
 i"MyNEU_MobileViewController.h"
 
 N/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/myneu_mobile.js
@@ -208,11 +209,11 @@ t1303470733
 s629
 
 N/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app
-t1303825603
+t1306461926
 s748
 
 N/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app.dSYM
-t1303815567
+t1306461926
 s102
 
 N/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/Default.png
@@ -248,8 +249,8 @@ t1303376471
 s1133
 
 N/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU
-t1303815567
-s30808
+t1306461926
+s71220
 
 N/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU_MobileViewController.nib
 t1303470984
@@ -312,21 +313,21 @@ t1303815656
 s2439
 
 N/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MBProgressHUD.o
-t2
-s0
+t1306461913
+s115224
 
 N/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MyNEU.LinkFileList
-c000000004DAFF256000000000000020F
-t1303376470
-s527
+c000000004DDF06D700000000000002BA
+t1306461911
+s698
 
 N/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MyNEU_MobileAppDelegate.o
 t1303481571
 s52888
 
 N/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MyNEU_MobileViewController.o
-t1303815566
-s70128
+t1306461926
+s70212
 
 N/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/main.o
 t1303376472
@@ -424,10 +425,20 @@ lSLF07#2@97"Analyze /Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mob
 
 CCheck dependencies
 r0
-lSLF07#2@18"Check dependencies325543855#325543855#0(0"0(0#1#0"8247620834010738688#0"0#
+lSLF07#2@18"Check dependencies328154726#328154726#0(0"0(0#1#0"8247620834010738688#0"0#
 
 CCompileC build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MBProgressHUD.o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MBProgressHUD.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-r0
+s328154712.717900
+e328154713.625790
+r1
+xCompileC
+xbuild/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MBProgressHUD.o
+x/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MBProgressHUD.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@114"Compile /Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MBProgressHUD.m328154712#328154713#0(0"0(0#0#106"/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MBProgressHUD.m8604743808#2482"    cd "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-generated-files.hmap" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-own-target-headers.hmap" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-all-target-headers.hmap" -iquote "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-project-headers.hmap" "-F/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/include" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/DerivedSources/i386" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/DerivedSources" -include /var/folders/rp/rpzNlOU4Fy8eV0YYsUcAuE+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/MyNEU_Mobile_Prefix-btfgluzkfnxkzgedvsswyigohfso/MyNEU_Mobile_Prefix.pch -c "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MBProgressHUD.m" -o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MBProgressHUD.o"0#
 
 CCompileC build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MyNEU_MobileAppDelegate.o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileAppDelegate.m" normal i386 objective-c com.apple.compilers.gcc.4_2
 s325174371.423601
@@ -443,8 +454,8 @@ xcom.apple.compilers.gcc.4_2
 lSLF07#2@124"Compile /Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileAppDelegate.m325174371#325174371#0(0"0(0#0#116"/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileAppDelegate.m8649522176#2502"    cd "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-generated-files.hmap" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-own-target-headers.hmap" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-all-target-headers.hmap" -iquote "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-project-headers.hmap" "-F/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/include" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/DerivedSources/i386" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/DerivedSources" -include /var/folders/rp/rpzNlOU4Fy8eV0YYsUcAuE+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/MyNEU_Mobile_Prefix-btfgluzkfnxkzgedvsswyigohfso/MyNEU_Mobile_Prefix.pch -c "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileAppDelegate.m" -o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MyNEU_MobileAppDelegate.o"0#
 
 CCompileC build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MyNEU_MobileViewController.o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s325508366.629290
-e325508366.769718
+s328154726.161549
+e328154726.300321
 r1
 xCompileC
 xbuild/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MyNEU_MobileViewController.o
@@ -453,7 +464,12 @@ xnormal
 xi386
 xobjective-c
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@127"Compile /Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m325508366#325508366#0(0"0(0#0#119"/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m8612627488#2508"    cd "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-generated-files.hmap" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-own-target-headers.hmap" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-all-target-headers.hmap" -iquote "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-project-headers.hmap" "-F/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/include" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/DerivedSources/i386" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/DerivedSources" -include /var/folders/rp/rpzNlOU4Fy8eV0YYsUcAuE+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/MyNEU_Mobile_Prefix-btfgluzkfnxkzgedvsswyigohfso/MyNEU_Mobile_Prefix.pch -c "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m" -o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MyNEU_MobileViewController.o"0#
+o/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m: In function '-[MyNEU_MobileViewController viewDidLoad]':
+o/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:51: warning: 'MyNEU_MobileViewController' may not respond to '-loadLoginURL'
+o/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:51: warning: (Messages without a matching method signature
+o/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:51: warning: will be assumed to return 'id' and accept
+o/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:51: warning: '...' as arguments.)
+lSLF07#2@127"Compile /Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m328154726#328154726#0(883"/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m: In function '-[MyNEU_MobileViewController viewDidLoad]':/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:51: warning: 'MyNEU_MobileViewController' may not respond to '-loadLoginURL'/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:51: warning: (Messages without a matching method signature/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:51: warning: will be assumed to return 'id' and accept/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m:51: warning: '...' as arguments.)2(22@63"'MyNEU_MobileViewController' may not respond to '-loadLoginURL'328154726#178#197#0(6@119"/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m328154726#51#0#51#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)328154726#375#179#0(6@119"/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m328154726#51#0#51#0#0"0(0#0#119"/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m8606876640#2508"    cd "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-generated-files.hmap" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-own-target-headers.hmap" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-all-target-headers.hmap" -iquote "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-project-headers.hmap" "-F/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/include" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/DerivedSources/i386" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/DerivedSources" -include /var/folders/rp/rpzNlOU4Fy8eV0YYsUcAuE+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/MyNEU_Mobile_Prefix-btfgluzkfnxkzgedvsswyigohfso/MyNEU_Mobile_Prefix.pch -c "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/Classes/MyNEU_MobileViewController.m" -o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MyNEU_MobileViewController.o"0#
 
 CCompileC build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/main.o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/main.m" normal i386 objective-c com.apple.compilers.gcc.4_2
 s325069271.675458
@@ -695,23 +711,23 @@ xtransmenu.js
 lSLF07#2@17"Copy transmenu.js325508456#325508456#0(0"0(0#0#95"/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/transmenu.js8604564096#668"    cd "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/transmenu.js" "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app"0#
 
 CGenerateDSYMFile "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app.dSYM" "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU"
-s325508367.183984
-e325508367.236868
+s328154726.816003
+e328154726.921750
 r1
 xGenerateDSYMFile
 x/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app.dSYM
 x/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU
-lSLF07#2@103"GenerateDSYMFile build/Debug-iphonesimulator/MyNEU.app.dSYM build/Debug-iphonesimulator/MyNEU.app/MyNEU325508367#325508367#0(0"0(0#0#126"/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU8618370240#577"    cd "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/dsymutil "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU" -o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app.dSYM"0#
+lSLF07#2@103"GenerateDSYMFile build/Debug-iphonesimulator/MyNEU.app.dSYM build/Debug-iphonesimulator/MyNEU.app/MyNEU328154726#328154726#0(0"0(0#0#126"/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU8607173440#577"    cd "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/dsymutil "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU" -o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app.dSYM"0#
 
 CLd "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU" normal i386
-s325508366.769813
-e325508367.183886
+s328154726.300451
+e328154726.815797
 r1
 xLd
 x/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU
 xnormal
 xi386
-lSLF07#2@131"Link /Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU325508366#325508367#0(0"0(0#0#0"8616651840#1182"    cd "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone"    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk "-L/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator" "-F/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator" -filelist "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MyNEU.LinkFileList" -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU"0#
+lSLF07#2@131"Link /Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU328154726#328154726#0(0"0(0#0#0"8602862464#1182"    cd "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone"    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk "-L/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator" "-F/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator" -filelist "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/Objects-normal/i386/MyNEU.LinkFileList" -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -o "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/MyNEU"0#
 
 CProcessInfoPlistFile "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app/Info.plist" MyNEU_Mobile-Info.plist
 s325174318.739491
@@ -739,10 +755,10 @@ xcom.apple.compilers.llvm.clang.1_0.analyzer
 lSLF07#2@34"Precompile MyNEU_Mobile_Prefix.pch325084829#325084829#0(0"0(0#0#106"/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/MyNEU_Mobile_Prefix.pch8616421760#2302"    cd "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fvisibility=hidden -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-generated-files.hmap" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-own-target-headers.hmap" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-all-target-headers.hmap" -iquote "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/MyNEU-project-headers.hmap" "-F/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/include" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/DerivedSources/i386" "-I/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/MyNEU.build/Debug-iphonesimulator/MyNEU.build/DerivedSources" -c "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/MyNEU_Mobile_Prefix.pch" -o /var/folders/rp/rpzNlOU4Fy8eV0YYsUcAuE+++TQ/-Caches-/com.apple.Xcode.503/SharedPrecompiledHeaders/MyNEU_Mobile_Prefix-dmejbdujcskyvugvquxyccfnqtpq/MyNEU_Mobile_Prefix.pch.pth0#
 
 CTouch "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app"
-s325518403.418634
-e325518403.421232
+s328154726.921905
+e328154726.939419
 r1
 xTouch
 x/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app
-lSLF07#2@126"Touch /Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app325518403#325518403#0(0"0(0#0#0"8603061504#430"    cd "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /usr/bin/touch -c "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app"0#
+lSLF07#2@126"Touch /Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app328154726#328154726#0(0"0(0#0#0"8606952896#430"    cd "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /usr/bin/touch -c "/Users/Wylie/Documents/School Work/2010-11/Projects/Crew/mobile-myneu/MyNEU iPhone/build/Debug-iphonesimulator/MyNEU.app"0#
 
